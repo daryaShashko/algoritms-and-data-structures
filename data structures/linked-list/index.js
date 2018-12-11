@@ -75,11 +75,21 @@ class SinglyLinkedList {
         if (index < 0 || !this.head || this.length >= index) return null;
         let currentNode = this.head;
         let counter = 0
-        while (counter < index) {
+        while (counter !== index) {
             counter++;
             currentNode = currentNode.next;
         }
-        return currentNode.val;
+        return currentNode;
+    }
+
+    set(index,val){
+        const target = this.get(index);
+        if(target){
+            target.element = val;
+            return true;
+        }else{
+            return false;
+        }
     }
 }
 
