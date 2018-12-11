@@ -91,6 +91,24 @@ class SinglyLinkedList {
             return false;
         }
     }
+
+    insert(index, val) {
+        let prevNode = this.get(index - 1);
+        let nextNode = prevNode.next;
+        const newNode = new Node(val);
+        if(index<0 || index >= this.length){
+            return false;
+        } else if (index === this.length){
+            return !!this.push(val);
+        } else if( index === 0){
+            return !!this.unshift(val);
+        } else {
+            prevNode.next = newNode;
+            newNode.next = nextNode;
+            this.length++;
+            return true;
+        }
+    }
 }
 
 const list = new SinglyLinkedList();
