@@ -39,22 +39,36 @@ class SinglyLinkedList {
             this.tail.next = null;
             this.length--;
         }
-        if(this.length === 0){
+        if (this.length === 0) {
             this.head = null;
-            this.tail =  null;
+            this.tail = null;
         }
         return currentNode.element;
     }
 
-    shift(){
-        if(!this.head) return undefined;
+    shift() {
+        if (!this.head) return undefined;
         var currentNode = this.head;
         this.head = currentNode.next;
         this.length--;
-        if(this.length === 0){
-            this.tail =  null;
+        if (this.length === 0) {
+            this.tail = null;
         }
         return currentNode.element;
+    }
+
+    unshift(val) {
+        const newNode = new Node(val);
+        const currentNode = this.head;
+        if (!this.head) {
+            this.tail = newNode;
+            this.head = newNode;
+        } else {
+            newNode.next = this.head;
+            this.head = newNode;
+        }
+        this.length ++;
+        return this;
     }
 }
 
