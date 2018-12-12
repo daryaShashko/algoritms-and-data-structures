@@ -127,12 +127,43 @@ class SinglyLinkedList {
             return target.element;
         }
     }
+
+    reverse(){
+        var node = this.head;
+        var nextNode=node.next;
+        var prevNode = null;
+        this.head = this.tail;
+        this.tail = node;
+        // for(var i=0; i<this.length; i++){
+        //     nextNode = node.next;
+        //     node.next = prevNode;
+        //     prevNode = node;
+        //     node = nextNode;
+        // }
+        while(node){
+           nextNode = node.next;
+           node.next = prevNode;
+           prevNode = node;
+           node = nextNode;
+        }
+        return this;  
+    }
+
+    print(){
+        var arr = [];
+        var currentNode = this.head;
+        while(currentNode){
+            arr.push(currentNode.element);
+            currentNode = currentNode.next;
+        }
+        console.log(arr)
+    }
 }
 
 const list = new SinglyLinkedList();
 list.push('Hello');
 list.push('Goodbye');
 list.push('!');
-console.log(list);
-list.pop();
-console.log(list);
+list.print();
+list.reverse();
+list.print();
