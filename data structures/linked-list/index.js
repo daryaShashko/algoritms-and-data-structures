@@ -82,12 +82,12 @@ class SinglyLinkedList {
         return currentNode;
     }
 
-    set(index,val){
+    set(index, val) {
         const target = this.get(index);
-        if(target){
+        if (target) {
             target.element = val;
             return true;
-        }else{
+        } else {
             return false;
         }
     }
@@ -96,17 +96,35 @@ class SinglyLinkedList {
         let prevNode = this.get(index - 1);
         let nextNode = prevNode.next;
         const newNode = new Node(val);
-        if(index<0 || index >= this.length){
+        if (index < 0 || index >= this.length) {
             return false;
-        } else if (index === this.length){
+        } else if (index === this.length) {
             return !!this.push(val);
-        } else if( index === 0){
+        } else if (index === 0) {
             return !!this.unshift(val);
         } else {
             prevNode.next = newNode;
             newNode.next = nextNode;
             this.length++;
             return true;
+        }
+    }
+
+    remove(index) {
+        let prevNode = this.get(index - 1);
+        let target = prevNode.next;
+        if (index < 0 || index >= this.length) {
+            return undefined;
+        }
+        else if (index === this.length - 1) { 
+            return this.pop(); 
+        }
+        else if (index === 0) { 
+            return this.shift(); 
+        } else {
+            prevNode.next = target.next;
+            this.length++;
+            return target.element;
         }
     }
 }
