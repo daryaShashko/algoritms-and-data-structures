@@ -31,13 +31,28 @@ class DoublyLinkedList {
         var target = this.tail;
         if(!this.tail){
             return undefined;
-        } else if(this.length === 0){
+        } else if(this.length === 1){
             this.tail = null;
             this.head = null;
         } else  {
             this.tail = target.prev;
             this.tail.next = null;
             target.prev = null;
+        }
+        this.length--;
+        return target;
+    }
+
+    shift(){
+        if(!this.head) return undefined;
+        var target = this.head;
+        if(this.length === 1){
+           this.head = null;
+           this.tail = null; 
+        } else {
+            this.head = target.next;
+            this.head.prev = null;
+            target.next = null;
         }
         this.length--;
         return target;
