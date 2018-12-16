@@ -27,6 +27,22 @@ class DoublyLinkedList {
         return this;
     }
 
+    pop(){
+        var target = this.tail;
+        if(!this.tail){
+            return undefined;
+        } else if(this.length === 0){
+            this.tail = null;
+            this.head = null;
+        } else  {
+            this.tail = target.prev;
+            this.tail.next = null;
+            target.prev = null;
+        }
+        this.length--;
+        return target;
+    }
+
     print(){
         var curNode = this.head;
         while(curNode){
@@ -40,5 +56,8 @@ var dll = new DoublyLinkedList;
 dll.push('hello');
 dll.push('world');
 dll.push('!');
+dll.print();
+dll.pop();
+dll.pop();
 dll.print();
 console.log('qwe', dll)
