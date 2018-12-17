@@ -123,6 +123,26 @@ class DoublyLinkedList {
         }
     }
 
+    remove(index){
+        if (index < 0 || index >= this.length) {
+            return undefined;
+        } else if (index === 0) {
+            return this.shift();
+        } else if (index === this.length - 1) {
+            return this.pop();
+        } else {
+            var target = this.get(index);
+            var nextNode = target.next;
+            var prevNode = target.prev;
+            nextNode.prev = prevNode;
+            prevNode.next=nextNode;
+            target.next = null;
+            target.prev = null;
+            this.length--;
+            return target;
+        }
+    }
+
     print() {
         var curNode = this.head;
         while (curNode) {
