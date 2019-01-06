@@ -53,4 +53,10 @@ class BST {
         if(!found) return undefined;
         return currentNode;
     }
+
+    bfs(){
+        var queue = [this.root];
+        var values=[];
+        queue.push(this.root)
+    }
 }

@@ -14,14 +14,26 @@ class Stack {
 
     push(val) {
         var newNode = new Node(val);
-        if (!this.length) {
+        if (!this.first) {
             this.first = newNode;
             this.last = newNode;
         } else {
-
-            this.last.next = newNode;
-            this.last = newNode;
+            newNode.next = this.first;
+            this.first = newNode;
         }
        return ++this.length;
+    }
+
+    pop(){
+        if(!this.size){
+            return null;
+        } 
+        var temp = this.first;
+        if(this.first === this.last){
+            this.last= null;
+        }
+        this.first = this.first.next;
+        this.size--;
+        return temp;
     }
 }

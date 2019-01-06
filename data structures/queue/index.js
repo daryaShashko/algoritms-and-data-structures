@@ -21,11 +21,12 @@ class Queue {
             this.last.next = newNode;
             this.last = newNode;
         }
-        this.size++;
+        return ++this.size;
     }
 
     dequeue() {
         if (this.size === 0) return undefined;
+        var current = this.first;
         if (this.first === this.last) {
             this.last = null;
         } else {
