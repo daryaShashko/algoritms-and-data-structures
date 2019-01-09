@@ -55,8 +55,69 @@ class BST {
     }
 
     bfs(){
-        var queue = [this.root];
+        var queue = [];
         var values=[];
-        queue.push(this.root)
+        var node = this.root;
+        queue.push(this.root);
+        while(queue.length){
+            node = queue.shift();
+            values.push(node);
+            if(node.left) {
+                queue.push(node.left);
+            }
+            if(node.right){
+                queue.push(node.right)
+            }
+        }
+       return values; 
     }
+
+    dfsPreOrder(){
+        var values = [];
+        var node = this.root;
+        const helper = (node) => {
+            values.push(node);
+            if(node.left){
+                helper(node.left);
+            }
+            if(node.right){
+                helper(node.right)
+            }
+        }
+        helper(node);
+        return values;
+    }
+
+    dfsPostOrder(){
+        var values = [];
+        var node = this.root;
+        const helper = (node) => {
+            if(node.left){
+                helper(node.left);
+            }
+            if(node.right){
+                helper(node.right)
+            }
+            values.push(node);
+        }
+        helper(node);
+        return values;
+    }
+
+    dfsInOrder(){
+        var values = [];
+        var node = this.root;
+        const helper = (node) => {
+            if(node.left){
+                helper(node.left);
+            }
+            values.push(node);
+            if(node.right){
+                helper(node.right)
+            }
+        }
+        helper(node);
+        return values;
+    }
+
 }
